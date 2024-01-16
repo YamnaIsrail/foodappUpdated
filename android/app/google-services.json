@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "702238377977",
+    "project_id": "foodapp-e30a2",
+    "storage_bucket": "foodapp-e30a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702238377977:android:604ecea80cc568dda35f28",
+        "android_client_info": {
+          "package_name": "com.yum.foodapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0qf8stWBFVpy8_XeODlCFshHZzhowr9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
