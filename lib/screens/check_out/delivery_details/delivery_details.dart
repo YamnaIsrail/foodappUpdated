@@ -5,6 +5,7 @@ import 'package:foodapp/providers/check_out_providers.dart';
 import 'package:foodapp/screens/check_out/add_delivery_address/add_delivery_address.dart';
 import 'package:foodapp/screens/check_out/delivery_details/single_delivery.dart';
 import 'package:foodapp/screens/check_out/payment_summary/payment_summary.dart';
+import 'package:foodapp/widgets/simple_app_bar_widget.dart';
 import 'package:provider/provider.dart';
 
 class DeliveryDetails extends StatefulWidget {
@@ -24,13 +25,7 @@ class _DeliveryDetailsState extends State<DeliveryDetails> {
     deliveryAddressProvider.getDeliveryAddressData();
 
     return  Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Delivery Details",
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
-        backgroundColor: primaryColor,
-      ),
+      appBar: SimpleAppBar(title: "Delivery Details",),
 
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.amberAccent,
@@ -44,8 +39,13 @@ class _DeliveryDetailsState extends State<DeliveryDetails> {
       ),
 
       bottomNavigationBar: Container(
-        height: 60,
-        margin: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+        height: 40,
+        width: 60,
+        margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        decoration: BoxDecoration(
+              gradient: primaryGradient,
+              borderRadius: BorderRadius.circular(30)
+        ),
         child: MaterialButton(
           child:  deliveryAddressProvider.getDeliveryAddressList.isEmpty
               ? Text("Add new Address", style: TextStyle(color: Colors.white))
@@ -58,10 +58,6 @@ class _DeliveryDetailsState extends State<DeliveryDetails> {
               ,
             );
           },
-          color: primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
         ),
       ),
 
