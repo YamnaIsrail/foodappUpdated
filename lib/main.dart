@@ -3,7 +3,6 @@ import 'package:foodapp/providers/product_provider.dart';
 import 'package:foodapp/providers/review_cart_provider.dart';
 import 'package:foodapp/providers/user_provider.dart';
 import 'package:foodapp/providers/wishlist_provider.dart';
-import 'package:foodapp/screens/home_screen/bottom_nav.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:foodapp/auth/sign_in.dart';

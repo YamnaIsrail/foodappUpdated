@@ -28,7 +28,7 @@ class singleProduct extends StatelessWidget {
       height: 240,
       width: 165,
       decoration: BoxDecoration(
-        color: Color(0xfffcfcfc),
+      //  gradient: primaryGradient,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
@@ -73,7 +73,7 @@ class singleProduct extends StatelessWidget {
                       Text(
                         productdescription,
                         style: TextStyle(
-                          color: Colors.grey,
+                          color: Colors.black54,
                         ),
                       ),
                      // SizedBox(height: 10),

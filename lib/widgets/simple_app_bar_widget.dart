@@ -32,6 +32,7 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
       flexibleSpace: Container(
         decoration: BoxDecoration(
           gradient: primaryGradient,
+          
         ),
       ),
       leading: leadingIcon != null
@@ -51,7 +52,8 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Text(
         title ?? "",
-        style: TextStyle(fontSize: 45.0, letterSpacing: 3, color: titleColor ?? Colors.white, fontFamily: "Signatra"),
+        style: TextStyle(fontSize: 45.0, letterSpacing: 3, color: titleColor ?? Colors.white,
+            fontFamily: "Signatra"),
       ),
     );
   }

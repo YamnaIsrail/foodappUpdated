@@ -28,7 +28,8 @@ class MySearchBar extends StatelessWidget {
       ),
       child: InkWell(
         onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Search(search: productProvider.productsDataList,)));
+          Navigator.push(context, MaterialPageRoute(builder: (context) =>
+              Search(search: productProvider.getAllProductSearch,)));
           print("hello");
         },
         child: Container(

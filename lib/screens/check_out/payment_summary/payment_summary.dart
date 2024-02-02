@@ -5,6 +5,7 @@ import 'package:foodapp/providers/review_cart_provider.dart';
 import 'package:foodapp/screens/check_out/delivery_details/single_delivery.dart';
 import 'package:foodapp/screens/check_out/payment_summary/my_google_pay.dart';
 import 'package:foodapp/screens/check_out/payment_summary/order_item.dart';
+import 'package:foodapp/widgets/simple_app_bar_widget.dart';
 import 'package:provider/provider.dart';
 
 import 'home_pay.dart';
@@ -42,13 +43,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Payment Summary",
-          style: TextStyle(fontSize: 18),
-        ),
-        backgroundColor: appbarColor,
-      ),
+      appBar: SimpleAppBar(title: "Payment Summary",),
       bottomNavigationBar: ListTile(
         title: Text("Total Amount"),
         subtitle: Text(
@@ -60,6 +55,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
           ),
         ),
         trailing: Container(
+          decoration: BoxDecoration(gradient: primaryGradient,borderRadius: BorderRadius.circular(30)),
           width: 160,
           child: MaterialButton(
             onPressed: () {
@@ -83,15 +79,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
 
             },
             child: Text(
-              "Place Order",
-              style: TextStyle(
-                color: textColor,
-              ),
-            ),
-            color: primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
+              "Place Order", style: TextStyle(color: textColor,),),
           ),
         ),
       ),

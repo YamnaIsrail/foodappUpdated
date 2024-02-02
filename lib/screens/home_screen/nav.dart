@@ -65,9 +65,9 @@ class _MyNavBarState extends State<MyNavBar> {
               iconTheme: IconThemeData(color: Colors.white),
             ),
             child: Container(
-              decoration: BoxDecoration(
-                gradient: primaryGradient,
-              ),
+              // decoration: BoxDecoration(
+              //   gradient: primaryGradient,
+              // ),
               child: CurvedNavigationBar(
                 key: navigationKey,
                 color: Colors.black26,

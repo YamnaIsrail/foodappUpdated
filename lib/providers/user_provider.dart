@@ -6,7 +6,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:foodapp/model/user_model.dart';
 
 class UserProvider with ChangeNotifier {
-  void addUserData({
+  void addUserData(
+      {
     required User currentUser,
     required String userName,
     required String userImage,

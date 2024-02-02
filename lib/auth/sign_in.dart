@@ -2,12 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodapp/config/colors.dart';
 import 'package:foodapp/providers/user_provider.dart';
-import 'package:foodapp/screens/home_screen/bottom_nav.dart';
+import 'package:foodapp/widgets/simple_app_bar_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 import '../screens/home_screen/homescreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../screens/home_screen/nav.dart';
 
 final GoogleSignIn _googleSignIn = GoogleSignIn(
   clientId: '702238377977-5oal6q07j2agsl6k2r2thk1p6e3hsfcf',
@@ -65,6 +67,7 @@ class _SignInState extends State<SignIn> {
     userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       backgroundColor: Colors.orange,
+      //appBar: SimpleAppBar(title: "login",),
 
 
       body: Container(
@@ -107,7 +110,7 @@ class _SignInState extends State<SignIn> {
                         await _googleSignUp().then(
                               (value) => Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) => MyHomePage(userProvider: UserProvider()),
+                              builder: (context) => MyNavBar(),
                             ),
                           ),
                         );

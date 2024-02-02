@@ -206,6 +206,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                           height: 30,
                           width: 70,
                           child: Count(
+                              color: primaryColor,
                               count_design: false,
                               productId: widget.productId,
                               productImage: widget.productImage,

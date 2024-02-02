@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:foodapp/config/colors.dart';
 import 'package:foodapp/providers/check_out_providers.dart';
 import 'package:foodapp/screens/check_out/delivery_details/delivery_details.dart';
-import 'package:foodapp/screens/check_out/google_map/google_map.dart';
 import 'package:foodapp/widgets/custom_text_field.dart';
+import 'package:foodapp/widgets/simple_app_bar_widget.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../google_map/google_map.dart';
+
 class AddDeliveryAddress extends StatefulWidget {
-  const AddDeliveryAddress({super.key});
+  const AddDeliveryAddress({Key? key}) : super(key: key);
 
   @override
   State<AddDeliveryAddress> createState() => _AddDeliveryAddressState();
@@ -18,7 +20,8 @@ enum AddressType { Home, Work, Other }
 
 class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
   AddressType myType = AddressType.Home;
-  //late String setLocation;
+  // Remove the duplicate declaration of setLocation
+  late String setLocationText = ""; // Change variable name to avoid conflicts
   LatLng setLocation = LatLng(37.7749, -122.4194);
 
   @override
@@ -26,25 +29,21 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
     CheckoutProvider checkoutProvider = Provider.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Add Delivery Address"),
-        backgroundColor: primaryColor,
-      ),
+      appBar: SimpleAppBar(title: "Add Delivery Address"),
       bottomNavigationBar: Container(
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         width: 160,
         height: 48,
+        decoration: BoxDecoration(
+            gradient: primaryGradient,
+            borderRadius: BorderRadius.circular(30)),
         child: MaterialButton(
           onPressed: () {
             checkoutProvider.validator(context, myType);
-            Navigator.of(context).push(MaterialPageRoute(builder: (context)=> DeliveryDetails()));
-
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => DeliveryDetails()));
           },
           child: Text("Add Address", style: TextStyle(color: text2Color)),
-          color: primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
+          
         ),
       ),
       body: Padding(
@@ -67,7 +66,6 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
               controller: checkoutProvider.alternateMobileNo,
               labText: "Alternative Mobile No",
             ),
-
             CustomTextField(
               controller: checkoutProvider.street,
               labText: "Street",
@@ -89,11 +87,22 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
               labText: "Pincode",
             ),
             InkWell(
-              onTap: () {
+              onTap: () async {
                 // Call a function to add the address
                 checkoutProvider.validator(context, myType);
 
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CustomGoogleMap()));
+                // Navigate to the map screen and receive the selected location
+                LatLng selectedLocation = await Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => CustomGoogleMap()),
+                );
+
+                if (selectedLocation != null) {
+                  // Update the location when the user selects a location on the map
+                  setState(() {
+                    setLocation = selectedLocation;
+                    setLocationText = "Location already added";
+                  });
+                }
               },
               child: Container(
                 height: 47,
@@ -102,13 +111,11 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    checkoutProvider.setLocation== null ?Text("Set Location") : Text("Location already added") ,
-
+                    Text(setLocationText),
                   ],
                 ),
               ),
             ),
-
             Divider(color: Colors.black),
             ListTile(title: Text("Address type")),
             RadioListTile(
@@ -116,13 +123,13 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
               title: Text("Home"),
               secondary: Icon(Icons.home, color: primaryColor),
               groupValue: myType,
-                onChanged: (AddressType? value) {
-                  if (value != null) {
-                    setState(() {
-                      myType = value;
-                    });
-                  }
+              onChanged: (AddressType? value) {
+                if (value != null) {
+                  setState(() {
+                    myType = value;
+                  });
                 }
+              },
             ),
             RadioListTile(
               value: AddressType.Work,
@@ -135,20 +142,20 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
                     myType = value;
                   });
                 }
-              }
+              },
             ),
             RadioListTile(
               value: AddressType.Other,
               title: Text("Other"),
               secondary: Icon(Icons.devices_other, color: primaryColor),
               groupValue: myType,
-                onChanged: (AddressType? value) {
-                  if (value != null) {
-                    setState(() {
-                      myType = value;
-                    });
-                  }
+              onChanged: (AddressType? value) {
+                if (value != null) {
+                  setState(() {
+                    myType = value;
+                  });
                 }
+              },
             ),
           ],
         ),

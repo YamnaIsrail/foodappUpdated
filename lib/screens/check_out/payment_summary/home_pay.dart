@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:foodapp/model/delivery_address_model.dart';
 import 'package:foodapp/model/review_cart_model.dart';
+import 'package:foodapp/widgets/simple_app_bar_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../../config/colors.dart';
@@ -36,14 +37,11 @@ class _home_payState extends State<home_pay> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Pay'),
-        backgroundColor: appbarColor,
-      ),
+      appBar: SimpleAppBar(title: "Home Pay",),
       body: Center(
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff000000)),
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xffa9bf4e)),
           ),
           onPressed: () {
             _placeOrder(context);

@@ -75,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       appBar: SimpleAppBar(
         title: "Food Flows",
+        backgroundColor: Colors.white,
         actions: [
           CircleAvatar(
             radius: 15,
@@ -85,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   MaterialPageRoute(
                     builder: (context) => Search(
                       search: productProvider.getAllProductSearch,
+
                     ),
                   ),
                 );
@@ -104,12 +106,12 @@ class _HomeScreenState extends State<HomeScreen> {
       )
       ,
       body: Container(
-        decoration:  BoxDecoration(
-          gradient: primaryGradient,
-        ),
+        // decoration:  BoxDecoration(
+        //   gradient: primaryGradient,
+        // ),
         child: ListView(
           children: [
-            SizedBox(height: 10),
+           // SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: RichText(
@@ -129,15 +131,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 textAlign: TextAlign.start,
               ),
             ),
-            SizedBox(height: 10),
+            //SizedBox(height: 10),
             MySearchBar(
               query: "",
               onChanged: (value) {},
             ),
             DiscountCard(),
-            SizedBox(height: 20),
-            categories(),
-            SizedBox(height: 30),
+            SizedBox(height: 10),
+            //categories(),
+            //SizedBox(height: 15),
 
 
             HerbsProductComponent(products: productProvider.productsDataList, context: context),

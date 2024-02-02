@@ -11,7 +11,7 @@ class Count extends StatefulWidget {
       required this.productName,
       required this.productImage,
       required this.productId,
-      required this.count_design});
+      required this.count_design,  Color? color});
 
   final String productName;
   final String productImage;
